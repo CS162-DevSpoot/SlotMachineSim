@@ -71,13 +71,13 @@ namespace CS162_SlotMachineSim
                 amountInserted = amountInserted + bet; //Updates the global amount inserted.
                 amountWon = amountWon + won; //Updates the global amount won.
 
-                if(won == bet / 2m) // Displays the winning condition message for the two of the three possible winning options.
+                if (won == bet / 2m) // Displays the winning condition message for the two of the three possible winning options.
                 {
                     MessageBox.Show($"You've won ${won.ToString("c")}! You have inserted ${amountInserted.ToString("c")} and have won ${amountWon} so far.");
                     return;
                 }
 
-                if(won == bet * 2m) //Displays the winning xondition message for the jackpots.
+                if (won == bet * 2m) //Displays the winning xondition message for the jackpots.
                 {
                     MessageBox.Show($"You got a jackpot and doubled your amount! You've won ${won.ToString("c")}! You have inserted ${amountInserted.ToString("c")} and have won ${amountWon} so far.");
                     return;
@@ -85,9 +85,9 @@ namespace CS162_SlotMachineSim
 
                 MessageBox.Show($"You lost, try again. You have inserted ${amountInserted.ToString("c")} and have won ${amountWon} so far."); //If no winnings occured, let the player know.
 
-               
+
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message); // Catch any errors.
             }
@@ -102,20 +102,24 @@ namespace CS162_SlotMachineSim
                 Random random = new Random();
                 int loops = random.Next(6, 16); // we pick a random amount of times to make the slots spin.
 
+                progressBar.Maximum = loops-1; //Sets the maxium progress bar value.
                 for (int i = 0; i < loops; i++) //For each loop.
                 {
                     randomSpin(); //Randomnize the slots value.
                     displaySpin(); //Display the slots.
+                    progressBar.Value = i; //Updates the progress bar.
                     wait(0300); //Wait .3 of a second before contiuning.
                 }
 
                 calculateWinnings(); //then at the end, calculate any winnings.
-            }catch(Exception ee){
+            }
+            catch (Exception ee)
+            {
                 MessageBox.Show(ee.Message); //Cathc any errors.
             }
         }
 
-  
+
 
         /// 
         /// “Wait One Second in Running Program.” Stack Overflow, stackoverflow.com/a/52906286/24042647. Accessed 5 Apr. 2024.
@@ -144,9 +148,14 @@ namespace CS162_SlotMachineSim
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-      
+
             Application.Exit(); // Closes the actual application, not just the window,
             this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

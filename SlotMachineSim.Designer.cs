@@ -36,6 +36,7 @@
             groupBox1 = new GroupBox();
             bet_TextBox = new TextBox();
             exitButton = new Button();
+            progressBar = new ProgressBar();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)slot3_pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)slot2_pictureBox).BeginInit();
@@ -49,10 +50,11 @@
             panel1.Controls.Add(slot3_pictureBox);
             panel1.Controls.Add(slot2_pictureBox);
             panel1.Controls.Add(slot1_pictureBox);
-            panel1.Location = new Point(63, 49);
+            panel1.Location = new Point(70, 90);
             panel1.Name = "panel1";
             panel1.Size = new Size(639, 207);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // slot3_pictureBox
             // 
@@ -99,7 +101,7 @@
             // 
             groupBox1.Controls.Add(bet_TextBox);
             groupBox1.Controls.Add(spinButton);
-            groupBox1.Location = new Point(303, 275);
+            groupBox1.Location = new Point(310, 316);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(168, 90);
             groupBox1.TabIndex = 2;
@@ -125,11 +127,20 @@
             exitButton.UseVisualStyleBackColor = false;
             exitButton.Click += exitButton_Click;
             // 
+            // progressBar
+            // 
+            progressBar.ForeColor = Color.Gold;
+            progressBar.Location = new Point(70, 44);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(639, 23);
+            progressBar.TabIndex = 4;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(progressBar);
             Controls.Add(exitButton);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
@@ -154,5 +165,6 @@
         private GroupBox groupBox1;
         private TextBox bet_TextBox;
         private Button exitButton;
+        private ProgressBar progressBar;
     }
 }
